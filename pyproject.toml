@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "typescratch"
+version = "1.6.7"
+description = "A programming language that compiles to Scratch 3 (.sb3) files"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "Apache-2.0"}
+authors = [{name = "TypeScratch"}]
+keywords = ["scratch", "compiler", "programming-language", "sb3", "education", "turbowarp"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: Software Development :: Compilers",
+]
+# On Windows, curses is not built-in, so we need windows-curses.
+# The platform marker ensures pip only installs it on Windows.
+dependencies = [
+    "windows-curses>=2.0; sys_platform == 'win32'",
+]
+
+[project.scripts]
+typescratch = "typescratch.cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/commit-to-the-git/typescratch"
+"Source" = "https://github.com/commit-to-the-git/typescratch"
+"Issue Tracker" = "https://github.com/commit-to-the-git/typescratch/issues"
+
+[tool.setuptools.packages.find]
+include = ["typescratch*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+typescratch = ["*.svg", "*.wav", "*.txt", "MASCOT_LICENSE"]
